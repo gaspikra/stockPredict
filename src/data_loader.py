@@ -10,7 +10,7 @@ def descargar_datos(nombre_ticker, period_selected, path):
     VALID_PERIODS = [
     '1d', '5d', 
     '1mo', '3mo', '6mo', 
-    '1y', '2y', '5y', '15y', 
+    '1y', '2y', '5y', '10y', 
     'ytd', 'max'
 ]
     if(period_selected not in VALID_PERIODS):
@@ -27,6 +27,8 @@ def descargar_datos(nombre_ticker, period_selected, path):
         data.columns.name = None
         guardar_csv(path,nombre_ticker,data)
 
+            
+
 def guardar_csv(path, nombre_ticker, data):
      try:
         archivo_destino = path / f"{nombre_ticker}.csv"
@@ -34,4 +36,4 @@ def guardar_csv(path, nombre_ticker, data):
      except Exception as e:
          print(f"error procesando:{nombre_ticker}: {e}")
          
-descargar_datos('SPY', '15y', path)
+descargar_datos(['AAPL','SPY'], '5y', path)
